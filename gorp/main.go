@@ -13,13 +13,13 @@ func main() {
 	dbmap := initDb()
 	defer dbmap.Db.Close()
 
-	// 删除所有数据
+	// 删除所有数据，这样可以使得自增的数字从新从 1 开始
 	err := dbmap.TruncateTables()
 	checkErr(err, "TruncateTables failed")
 
-	// create two posts
-	p1 := newPost("明天去爬山有人一起吗？", "莲花山走起，明天天气会很好，加入吗？")
-	p2 := newPost("官宣，我们结婚了！", "取得白富美为妻子，快来祝福我吧！")
+	// 创建两个话题，无需给 Id 赋值，因为 Id 是自增列
+	p1 := newPost("go-gorp 是一个 orm 框架", "我们使用 gorp 在我们的 web 项目中")
+	p2 := newPost("gorp 与 mysql 的使用样例", "gorp 是一款流行的 go orm 框架")
 
 	// 插入上面两条数据，Id 是自增，无需赋值
 	err = dbmap.Insert(&p1, &p2)
@@ -31,7 +31,7 @@ func main() {
 	log.Println("Rows after inserting:", count)
 
 	// 更新值
-	p2.Title = "Go 1.2 is better than ever"
+	p2.Title = "go-gorp 更新值，按照 id 指定的更新了"
 	count, err = dbmap.Update(&p2)
 	checkErr(err, "Update failed")
 	log.Println("Rows updated:", count)
@@ -41,7 +41,9 @@ func main() {
 	checkErr(err, "SelectOne failed")
 	log.Println("p2 row:", p2)
 
-	// 获取所有行
+	// 获取所有行，这里最体现 orm 的特点，它会自动对应结构体的字段，
+	// 注意结构体的字段必须不能少于数据库返回的字段，否则会报错
+	// 返回的每个字段均不能为空，否则会报错
 	var posts []Post
 	_, err = dbmap.Select(&posts, "select * from posts order by post_id")
 	checkErr(err, "Select failed")
@@ -92,10 +94,6 @@ func initDb() *gorp.DbMap {
 
 	// 添加一个表，设置表名“posts”，指定一个主键为“Id”，true 表示自增
 	dbmap.AddTableWithName(Post{}, "posts").SetKeys(true, "Id")
-
-	// 如果表不存在，创建表
-	//err = dbmap.CreateTablesIfNotExists()
-	//checkErr(err, "Create tables failed")
 
 	return dbmap
 }
