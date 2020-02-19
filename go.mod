@@ -3,7 +3,7 @@ module goexample
 go 1.13
 
 require (
-	github.com/go-sql-driver/mysql v1.5.0 // indirect
+	github.com/go-sql-driver/mysql v1.5.0
 	github.com/gogo/protobuf v1.3.1 // indirect
 	github.com/gorilla/websocket v1.4.1 // indirect
 	github.com/graphql-go/graphql v0.7.8
@@ -14,5 +14,5 @@ require (
 	github.com/satori/go.uuid v1.2.0
 	golang.org/x/sync v0.0.0-20190911185100-cd5d95a43a6e // indirect
 	gopkg.in/check.v1 v1.0.0-20190902080502-41f04d3bba15 // indirect
-	gopkg.in/gorp.v2 v2.2.0 // indirect
+	gopkg.in/gorp.v2 v2.2.0
 )
