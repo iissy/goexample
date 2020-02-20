@@ -1,17 +1,27 @@
-// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
-// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-
-// See page 165.
-
-// Package intset provides a set of integers based on a bit vector.
-package intset
+package main
 
 import (
 	"bytes"
 	"fmt"
 )
 
-//!+intset
+func main() {
+	var x, y IntSet
+	x.Add(1)
+	x.Add(144)
+	x.Add(9)
+	x.Add(88)
+	fmt.Printf("集合x：\t%s\n", x.String())
+
+	y.Add(9)
+	y.Add(42)
+	fmt.Printf("集合y：\t%s\n", y.String())
+
+	x.UnionWith(&y)
+	fmt.Printf("xy的并集：\t%s\n", x.String())
+
+	fmt.Printf("xy的并集是否包含9：%t；xy的并集是否包含123：%t", x.Has(9), x.Has(123))
+}
 
 // An IntSet is a set of small non-negative integers.
 // Its zero value represents the empty set.
@@ -45,10 +55,6 @@ func (s *IntSet) UnionWith(t *IntSet) {
 	}
 }
 
-//!-intset
-
-//!+string
-
 // String returns the set as a string of the form "{1 2 3}".
 func (s *IntSet) String() string {
 	var buf bytes.Buffer
@@ -69,5 +75,3 @@ func (s *IntSet) String() string {
 	buf.WriteByte('}')
 	return buf.String()
 }
-
-//!-string
