@@ -6,6 +6,7 @@ import (
 )
 
 func main() {
+	// 定义集合 x, y，并添加整型元素
 	var x, y IntSet
 	x.Add(1)
 	x.Add(144)
@@ -23,19 +24,18 @@ func main() {
 	fmt.Printf("xy的并集是否包含9：%t；xy的并集是否包含123：%t", x.Has(9), x.Has(123))
 }
 
-// An IntSet is a set of small non-negative integers.
-// Its zero value represents the empty set.
+// 定义一个无符号的整型集合（小的非负整数）
 type IntSet struct {
 	words []uint64
 }
 
-// Has reports whether the set contains the non-negative value x.
+// 集合是否包含元素
 func (s *IntSet) Has(x int) bool {
 	word, bit := x/64, uint(x%64)
 	return word < len(s.words) && s.words[word]&(1<<bit) != 0
 }
 
-// Add adds the non-negative value x to the set.
+// 添加集合元素
 func (s *IntSet) Add(x int) {
 	word, bit := x/64, uint(x%64)
 	for word >= len(s.words) {
@@ -44,7 +44,7 @@ func (s *IntSet) Add(x int) {
 	s.words[word] |= 1 << bit
 }
 
-// UnionWith sets s to the union of s and t.
+// 计算两个集合的并集
 func (s *IntSet) UnionWith(t *IntSet) {
 	for i, tword := range t.words {
 		if i < len(s.words) {
@@ -55,7 +55,7 @@ func (s *IntSet) UnionWith(t *IntSet) {
 	}
 }
 
-// String returns the set as a string of the form "{1 2 3}".
+// 输出集合格式这样 {1 4 7}
 func (s *IntSet) String() string {
 	var buf bytes.Buffer
 	buf.WriteByte('{')
