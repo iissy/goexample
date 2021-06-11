@@ -6,6 +6,7 @@ require (
 	github.com/go-gorp/gorp v2.2.0+incompatible // indirect
 	github.com/go-redis/redis/v8 v8.10.0
 	github.com/go-redsync/redsync/v4 v4.3.0
+	github.com/go-resty/resty/v2 v2.6.0
 	github.com/go-sql-driver/mysql v1.6.0
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/gorilla/websocket v1.4.2 // indirect
