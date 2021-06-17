@@ -14,6 +14,7 @@ require (
 	github.com/kylelemons/godebug v1.1.0 // indirect
 	github.com/lib/pq v1.10.2 // indirect
 	github.com/mattn/go-sqlite3 v1.14.7 // indirect
+	github.com/natefinch/lumberjack v2.0.0+incompatible
 	github.com/olivere/elastic v6.2.35+incompatible // indirect
 	github.com/olivere/elastic/v6 v6.2.1
 	github.com/poy/onpar v1.1.2 // indirect
@@ -23,5 +24,7 @@ require (
 	github.com/satori/go.uuid v1.2.0
 	github.com/sirupsen/logrus v1.8.1
 	github.com/ziutek/mymysql v1.5.4 // indirect
+	go.uber.org/zap v1.17.0
 	gopkg.in/gorp.v2 v2.2.0
+	gopkg.in/natefinch/lumberjack.v2 v2.0.0 // indirect
 )
