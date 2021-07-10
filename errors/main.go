@@ -1,13 +1,28 @@
 package main
 
 import (
-	"errors"
 	"fmt"
+
+	"github.com/juju/errors"
 )
 
 func main() {
-	err1 := errors.New("error1")
-	err2 := errors.New("error2")
-	err3 := fmt.Errorf("%s.%w", err1, err2)
-	fmt.Println(err3)
+	err := errors.New("first error")
+	fmt.Println(err)
+	err = errors.Trace(err)
+	fmt.Println(err)
+	err = errors.Annotate(err, "some context")
+	fmt.Println(err)
+
+	err2 := errors.New("second error")
+	err = errors.Wrap(err, err2)
+	fmt.Println(err)
+	
+	err = errors.Maskf(err, "masked")
+	fmt.Println(err)
+	err = errors.Annotate(err, "more context")
+	fmt.Println(err)
+	err = errors.Trace(err)
+	fmt.Println(err)
+	fmt.Print(errors.ErrorStack(err))
 }

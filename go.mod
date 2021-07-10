@@ -11,6 +11,8 @@ require (
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/gorilla/websocket v1.4.2 // indirect
 	github.com/graphql-go/graphql v0.7.9
+	github.com/juju/errors v0.0.0-20200330140219-3fe23663418f
+	github.com/juju/testing v0.0.0-20210324180055-18c50b0c2098 // indirect
 	github.com/kylelemons/godebug v1.1.0 // indirect
 	github.com/lib/pq v1.10.2 // indirect
 	github.com/mattn/go-sqlite3 v1.14.7 // indirect

@@ -50,10 +50,7 @@ func initLogger(logpath string, loglevel string) *zap.Logger {
 		level,
 	)
 
-	logger := zap.New(core, zap.AddCaller())
-
-	logger.Info("DefaultLogger init success")
-
+	logger := zap.New(core, zap.AddCaller(), zap.AddCallerSkip(2))
 	return logger
 }
 
@@ -74,11 +71,9 @@ func main() {
 
 	// 历史记录日志名字为：all-2018-11-15T07-45-51.763.log，服务重新启动，日志会追加，不会删除
 	logger := initLogger("./iissy.log", "debug")
-	for i := 0; i < 10000; i++ {
-		logger.Info(fmt.Sprint("test log ", i), zap.Int("line", 47))
-		logger.Debug(fmt.Sprint("debug log ", i), zap.ByteString("level", data))
-		logger.Info(fmt.Sprint("Info log ", i), zap.String("level", `{"a":"4","b":"5"}`))
-		logger.Warn(fmt.Sprint("Info log ", i), zap.String("level", `{"a":"7","b":"8"}`))
-		logger.Error(fmt.Sprint("error log ", i), zap.String("level", "i am error."))
-	}
+	logger.Info(fmt.Sprint("test log ", 1), zap.Int("line", 47))
+	logger.Debug(fmt.Sprint("debug log ", 1), zap.ByteString("level", data))
+	logger.Info(fmt.Sprint("Info log ", 1), zap.String("level", `{"a":"4","b":"5"}`))
+	logger.Warn(fmt.Sprint("Info log ", 1), zap.String("level", `{"a":"7","b":"8"}`))
+	logger.Error(fmt.Sprint("error log ", 1), zap.String("level", "i am error."))
 }
