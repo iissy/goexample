@@ -37,7 +37,7 @@ func initLogger(logpath string, loglevel string) *zap.Logger {
 	}
 
 	encoderConfig := zap.NewProductionEncoderConfig()
-	encoderConfig.EncodeTime = zapcore.ISO8601TimeEncoder
+	encoderConfig.EncodeTime = zapcore.TimeEncoderOfLayout("2006-01-02 15:04:05.000")
 	// 彩色显示，纯控制台输出可以彩色输出
 	encoderConfig.EncodeLevel = zapcore.CapitalColorLevelEncoder
 	// 全路径地址，通常不需要
@@ -45,7 +45,7 @@ func initLogger(logpath string, loglevel string) *zap.Logger {
 
 	core := zapcore.NewCore(
 		//获取编码器,NewJSONEncoder()输出json格式，NewConsoleEncoder()输出普通文本格式
-		zapcore.NewConsoleEncoder(encoderConfig),
+		zapcore.NewJSONEncoder(encoderConfig),
 		zapcore.NewMultiWriteSyncer(zapcore.AddSync(&hook), zapcore.AddSync(os.Stdout)),
 		level,
 	)
@@ -76,4 +76,5 @@ func main() {
 	logger.Info(fmt.Sprint("Info log ", 1), zap.String("level", `{"a":"4","b":"5"}`))
 	logger.Warn(fmt.Sprint("Info log ", 1), zap.String("level", `{"a":"7","b":"8"}`))
 	logger.Error(fmt.Sprint("error log ", 1), zap.String("level", "i am error."))
+	logger.Error(fmt.Sprint("error log ", 1), zap.Any("code", 48), zap.Any("message", "error in dir."))
 }
