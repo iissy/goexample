@@ -9,6 +9,7 @@ require (
 	github.com/go-resty/resty/v2 v2.6.0
 	github.com/go-sql-driver/mysql v1.6.0
 	github.com/gogo/protobuf v1.3.2 // indirect
+	github.com/gomodule/redigo v1.8.2
 	github.com/gorilla/websocket v1.4.2 // indirect
 	github.com/graphql-go/graphql v0.7.9
 	github.com/juju/errors v0.0.0-20200330140219-3fe23663418f

@@ -2,21 +2,12 @@ package main
 
 import (
 	"fmt"
-	"math"
+	"goexample/types"
 )
 
 func main() {
-	p := Point{1, 2}
-	q := Point{4, 6}
+	p := types.Point{Dian: types.Dian{X: 1, Y: 2}}
+	q := types.Point{Dian: types.Dian{X: 4, Y: 6}}
 
-	dis := Point.Distance
-	fmt.Println(dis(p, q))
-}
-
-type Point struct {
-	X, Y float64
-}
-
-func (p Point) Distance(q Point) float64 {
-	return math.Hypot(q.X-p.X, q.Y-p.Y)
+	fmt.Println(types.Point.Distance(p, q))
 }
