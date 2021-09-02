@@ -22,6 +22,7 @@ require (
 	github.com/olivere/elastic/v6 v6.2.1
 	github.com/poy/onpar v1.1.2 // indirect
 	github.com/rakyll/statik v0.1.7 // indirect
+	github.com/robfig/cron/v3 v3.0.1
 	github.com/samsarahq/go v0.0.0-20210308200756-be0e1e5b6582 // indirect
 	github.com/samsarahq/thunder v0.5.0
 	github.com/satori/go.uuid v1.2.0
