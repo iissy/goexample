@@ -8,9 +8,7 @@ require (
 	github.com/go-redsync/redsync/v4 v4.3.0
 	github.com/go-resty/resty/v2 v2.6.0
 	github.com/go-sql-driver/mysql v1.6.0
-	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/gomodule/redigo v1.8.2
-	github.com/gorilla/websocket v1.4.2 // indirect
 	github.com/graphql-go/graphql v0.7.9
 	github.com/juju/errors v0.0.0-20200330140219-3fe23663418f
 	github.com/juju/testing v0.0.0-20210324180055-18c50b0c2098 // indirect
@@ -28,6 +26,7 @@ require (
 	github.com/satori/go.uuid v1.2.0
 	github.com/sirupsen/logrus v1.8.1
 	github.com/ziutek/mymysql v1.5.4 // indirect
+	go-micro.dev/v4 v4.2.1
 	go.uber.org/zap v1.17.0
 	gopkg.in/gorp.v2 v2.2.0
 	gopkg.in/natefinch/lumberjack.v2 v2.0.0 // indirect
